@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "jshint": "jshint --show-non-errors .",
-    "build": "npm run jshint && node download",
+    "build": "npm run jshint && node download && node build",
     "test": "npm run build && node test"
   },
   "repository": {
@@ -31,5 +31,8 @@
     "filed": "0.0.7",
     "request": "~2.16.6",
     "jshint": "~1.1.0"
+  },
+  "dependencies": {
+    "jsdom": "~0.5.4"
   }
 }
