@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "jshint": "jshint --show-non-errors .",
-    "build": "npm run jshint",
+    "build": "npm run jshint && node download",
     "test": "npm run build && node test"
   },
   "repository": {
@@ -28,6 +28,8 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "filed": "0.0.7",
+    "request": "~2.16.6",
     "jshint": "~1.1.0"
   }
 }
