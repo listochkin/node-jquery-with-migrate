@@ -26,7 +26,20 @@
         }.call(window)); // `this` should point to window inside jquery.js
 
         // jQuery puts itself into `module.exports` if it's available
-        var jQuery = module.exports;
+        // jQuery 2.0 doesn't put itself into window or global,
+        // however Migrate need a reference to it
+        var jQuery = window.jQuery = window.$ = module.exports;
+
+        (function () {
+            // Migrate assumes document is in the scope
+            var document = window.document;
+            // Migrate assumes navigator is in the scope
+            var navigator = window.navigator;
+//========================================
+//MIGRATE
+//========================================
+        }.call(window));
+
         // `xmlhttprequest` does CORS requests although it doesn't expose `withCredentials` atm
         jQuery.support.cors = true;
         return jQuery;
