@@ -1,4 +1,4 @@
-/*jshint unused:false*/
+/*jshint unused:false */
 /*globals require, module */
 'use strict';
 (function () {
@@ -11,7 +11,9 @@
     function create (window) {
         if (typeof window === 'undefined' || !('document' in window)) {
             // setup an environment:
-            var jsdom = require('jsdom').jsdom;
+            // work around browserify attempting to load jsdom
+            var nodeRequire = require;
+            var jsdom = nodeRequire('jsdom').jsdom;
             var doc = jsdom('<html><head></head><body></body></html>');
             window = doc.createWindow();
         }

@@ -30,7 +30,10 @@
   "devDependencies": {
     "filed": "0.0.7",
     "request": "~2.16.6",
-    "jshint": "~1.1.0"
+    "jshint": "~1.1.0",
+    "browserify": "~2.8.0",
+    "wd": "0.0.31",
+    "colors": "~0.6.0-1"
   },
   "dependencies": {
     "xmlhttprequest": "~1.5.0",
