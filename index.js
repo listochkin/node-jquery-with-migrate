@@ -2,7 +2,11 @@
 /*globals require, module */
 'use strict';
 (function () {
-    var global = this;
+    var global = this,
+        XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
+    // jQuery assumes XMLHttpRequest to be global
+    if (!('XMLHttpRequest' in global)) global.XMLHttpRequest = XMLHttpRequest;
 
     function create (window) {
         if (typeof window === 'undefined' || !('document' in window)) {
@@ -11,6 +15,9 @@
             var doc = jsdom('<html><head></head><body></body></html>');
             window = doc.createWindow();
         }
+
+        // jsdom includes an incomplete version of XMLHttpRequest
+        window.XMLHttpRequest = XMLHttpRequest;
 
         (function () {
 //========================================
@@ -8709,7 +8716,10 @@ if ( typeof module === "object" && typeof module.exports === "object" ) {
         }.call(window)); // `this` should point to window inside jquery.js
 
         // jQuery puts itself into `module.exports` if it's available
-        return module.exports;
+        var jQuery = module.exports;
+        // `xmlhttprequest` does CORS requests although it doesn't expose `withCredentials` atm
+        jQuery.support.cors = true;
+        return jQuery;
     }
 
     // create a jQuery instance for an empty document by default
