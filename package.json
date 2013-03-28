@@ -1,9 +1,10 @@
 {
   "name": "jquery-with-migrate",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Latest jQuery (currently 2.0.0b2) with jQuery-Migrate plugin wrapped for Node.js and a browser (window globals, Browserify or AMD)",
   "main": "index.js",
   "scripts": {
+    "prepublish": "npm test",
     "jshint": "jshint --show-non-errors .",
     "build": "npm run jshint && node download && node build",
     "test": "npm run build && node test"
@@ -12,19 +13,22 @@
     "type": "git",
     "url": "git://github.com/listochkin/node-jquery-with-migrate.git"
   },
+  "bugs": {
+    "url": "https://github.com/listochkin/node-jquery-with-migrate/issues"
+  },
   "keywords": [
     "jquery",
     "jquery 2",
     "jquery 2.0",
-    "jquery-migrate",
+    "jquery migrate",
     "browserify",
     "AMD",
-    "jquery-node",
-    "node-jquery",
-    "browserify-jquery",
-    "jquery-browserify"
+    "jquery node",
+    "node jquery",
+    "browserify jquery",
+    "jquery browserify"
   ],
-  "author": "Андрей Листочкин (Andrey Listochkin) <listochkin@outlook.com>",
+  "author": "Андрей Листочкин <listochkin@outlook.com>",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
