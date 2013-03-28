@@ -27,6 +27,17 @@ jsdom.env('https://google.com', function (error, window) {
     });
 });
 
+jsdom.env('https://google.com', [
+    'https://raw.github.com/cujojs/curl/0.7.3/dist/curl/curl.js'
+], function (error, window) {
+    if (error) return;
+    var jq = $.create(window);
+    window.curl('jquery', function (jqAmd) {
+        if (jq !== jqAmd) throw 'AMD loader test failed';
+        console.log('AMD loader test passed'.green);
+    });
+});
+
 browserify(path.join(__dirname, 'index.js')).bundle(function (browserifyError, code) {
     if (browserifyError) throw 'Failed to browserify: ' + browserifyError;
 

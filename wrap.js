@@ -42,6 +42,13 @@
 //========================================
         }.call(window));
 
+        // since jQuery returned itself via module.exports we have to register it in AMD ourselves
+        var define = window.define || global.define;
+        if ( typeof define === 'function' && define.amd ) {
+            // jQuery registers itself with lowercase name
+            define( 'jquery', [], function () { return jQuery; } );
+        }
+
         // `xmlhttprequest` does CORS requests although it doesn't expose `withCredentials` atm
         jQuery.support.cors = true;
         return jQuery;

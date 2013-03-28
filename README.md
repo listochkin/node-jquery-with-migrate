@@ -27,6 +27,19 @@ Use with Browserify:
     // globals are still defined
     console.log($ === window.jQuery);
 
+Use with AMD:
+-------------
+
+ 1. Run **jQuery+Migrate** through Browserify:
+
+        browserify -r jquery-with-migrate > jquery-with-migrate.js
+
+ 2. Use it in other AMD modules (exposed as `'jquery'`):
+
+        define(['jquery'], function ($) {
+            console.log($ === window.jQuery);
+        });
+
 Installing on Windows:
 ======================
 
