@@ -23,7 +23,7 @@ jsdom.env('https://google.com', function (error, window) {
     }).done(function () {
         console.log('Ajax test passed'.green);
     }).fail(function (xhr, status, message) {
-        throw new Error('Ajax test failer with (' + status + ') ' + message);
+        throw new Error('Ajax test failed with (' + status + ') ' + message);
     });
 });
 
