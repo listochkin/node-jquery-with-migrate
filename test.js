@@ -60,7 +60,13 @@ browserify(path.join(__dirname, 'index.js')).bundle(function (browserifyError, c
     });
 
     browser.on('command', function(meth, path, data) {
-        console.log(' > ' + meth.yellow, path.grey, data);
+        var s;
+        if (data) {
+            var dataString = JSON.stringify(data);
+            s = dataString.substr(0, 200);
+            if (dataString.length > s.length) s += '...';
+        }
+        console.log(' > ' + meth.yellow, path.grey, s || '');
     });
 
     try {
