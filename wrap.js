@@ -19,7 +19,7 @@
         }
 
         // jsdom includes an incomplete version of XMLHttpRequest
-        window.XMLHttpRequest = XMLHttpRequest;
+        window.XMLHttpRequest = global.XMLHttpRequest;
 
         (function () {
 //========================================
